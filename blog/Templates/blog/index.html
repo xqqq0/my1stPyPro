@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<h1>{{ article.title }}</h1>
-<h2>{{ article.content }}</h2>
+
 <body>
+<!-创建新文章超链接->
+<h1>
+    <a href="">新文章</a>
+</h1>
+<!- 循环文章列表 ->
+{% for article in articles %}
+    <a href="">{{ article.title }}</a>
+    <br>
+{% endfor %}
 
 </body>
 </html>
