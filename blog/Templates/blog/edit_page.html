@@ -8,6 +8,7 @@
 <form action="{% url "blog:edit_action" %}" method="post">
     {% csrf_token %}
     {% if article %}
+        <input type="hidden" name="article_id" value="{{ article.id }}">
         <label> 文章标题：
             <input type="text" name="title", value="{{ article.title }}">
         </label>
@@ -16,6 +17,7 @@
             <input type="text" name="content" value="{{ article.content }}">
         </label>
     {% else %}
+        <input type="hidden" name="article_id" value="0">
         <label> 文章标题：
             <input type="text" name="title">
         </label>

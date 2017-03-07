@@ -22,6 +22,16 @@ def edit_page(request,article_id):
 def edit_action(request):
     title = request.POST.get("title")
     content = request.POST.get("content")
-    models.Article.objects.create(title=title,content=content)
-    articles = models.Article.objects.all()
-    return render(request, "blog/index.html", {"articles": articles})
+    article_id = request.POST.get("article_id")
+    if str(article_id) == "0":
+        models.Article.objects.create(title=title,content=content)
+        articles = models.Article.objects.all()
+        return render(request, "blog/index.html", {"articles": articles})
+
+    article = models.Article.objects.get(pk=article_id)
+    article.title = title
+    article.content = content
+    article.save()
+    return render(request, "blog/article_page.html", {"article": article})
+
+
