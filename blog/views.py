@@ -27,7 +27,6 @@ def edit_action(request):
         models.Article.objects.create(title=title,content=content)
         articles = models.Article.objects.all()
         return render(request, "blog/index.html", {"articles": articles})
-
     article = models.Article.objects.get(pk=article_id)
     article.title = title
     article.content = content
