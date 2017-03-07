@@ -12,7 +12,7 @@
 </h1>
 <!- 循环文章列表 ->
 {% for article in articles %}
-    <a href="">{{ article.title }}</a>
+    <a href="{% url "blog:article_page" article.id %}">{{ article.title }}</a>
     <br>
 {% endfor %}
 
